@@ -23,8 +23,7 @@ public class StepDefs {
 	String base_url="http://amazon.in/";
 	int implicit_wait_timeout_in_sec=20;
 	Scenario scn;
-
-
+	
 	@Before
 	public void setUp(Scenario scn) {
 		this.scn=scn;
@@ -66,8 +65,4 @@ public class StepDefs {
 		Assert.assertEquals("Page Title validation", "Amazon.in : laptop", driver.getTitle());
 		scn.log("Search page is displayed");
 	}
-
-
-
-
 }
