@@ -5,13 +5,13 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features="classpath:features",
+        features="classpath:features/AddToCart.feature",
         glue="com.visionit.automation.stepdefs", 
         tags="",
         plugin = {"pretty",
-            "html:target/html/htmlreport.html",
-            "json:target/json/file.json",
-            },
+                  "html:target/html/htmlreport.html",
+                  "json:target/json/file.json"
+                 },
         publish=true,
         dryRun=false 
         )

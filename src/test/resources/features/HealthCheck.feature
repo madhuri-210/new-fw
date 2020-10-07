@@ -11,5 +11,8 @@ Feature: E-commerce Project Web Site Health Check
     And User Search for product "earphone"
     When User click on any product
     Then Product Description is displayed in new tab
+    
+  
+    
   
     

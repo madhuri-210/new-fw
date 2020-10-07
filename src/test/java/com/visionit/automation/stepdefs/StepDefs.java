@@ -1,6 +1,11 @@
 package com.visionit.automation.stepdefs;
 
 import java.util.concurrent.TimeUnit;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import com.visionit.automation.pageobjects.*;
@@ -12,6 +17,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class StepDefs {
+	private static final Logger logger = LogManager.getLogger(StepDefs.class);
 	WebDriver driver;
 	String base_url="https://amazon.in/";
 	int implicit_wait_timeout_in_sec=20;
@@ -22,8 +28,10 @@ public class StepDefs {
 	ProductDescriptionPageObjects productDescriptionPageObjects;
 
 	@Before
-	public void setUp(Scenario scn) {
+	public void setUp(Scenario scn)throws Exception {
 		this.scn=scn;
+
+		logger.info("Browser invoked.");
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(implicit_wait_timeout_in_sec, TimeUnit.SECONDS);
@@ -34,6 +42,8 @@ public class StepDefs {
 
 	@After
 	public void cleanUp(){
+		TakesScreenshot scrnShot=(TakesScreenshot)driver;
+		byte[] data=scrnShot.getScreenshotAs(OutputType.BYTES);
 		driver.quit();
 		scn.log("Browser Closed");
 	}
@@ -72,4 +82,9 @@ public class StepDefs {
 		scn.log("Switched to the new tab");	
 	}
 
+	@Then("User is click on Add to cart")
+	public void user_is_click_on_add_to_cart() {
+		searchPageObjects.UserClickOnAddToCartBtn();
+		scn.log("Clicked on add to cart button");
+	}
 }

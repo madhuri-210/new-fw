@@ -10,7 +10,7 @@ public class ProductDescriptionPageObjects {
 	private static final Logger logger = LogManager.getLogger(ProductDescriptionPageObjects.class);
 	private WebDriver driver;
 	private By product_title=By.xpath("//span[@class='a-size-medium a-color-base a-text-normal']");
-	
+
 	public ProductDescriptionPageObjects(WebDriver driver){
 		this.driver=driver;
 	}
