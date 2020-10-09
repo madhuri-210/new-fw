@@ -13,6 +13,7 @@ import org.junit.runner.RunWith;
                   "json:target/json/file.json"
                  },
         publish=true,
+        monochrome=true,
         dryRun=false 
         )
 public class TestRunner {
