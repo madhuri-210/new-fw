@@ -30,7 +30,6 @@ public class StepDefs {
 	@Before
 	public void setUp(Scenario scn)throws Exception {
 		this.scn=scn;
-
 		logger.info("Browser invoked.");
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
@@ -41,13 +40,18 @@ public class StepDefs {
 	}
 
 	@After
-	public void cleanUp(){
-		TakesScreenshot scrnShot=(TakesScreenshot)driver;
-		byte[] data=scrnShot.getScreenshotAs(OutputType.BYTES);
-		driver.quit();
-		scn.log("Browser Closed");
-	}
+	public void tearDown(Scenario scenario) {
+		if (scenario.isFailed()) {
+			// Take a screenshot...
 
+			TakesScreenshot scrnShot=(TakesScreenshot)driver;
+			byte[] data=scrnShot.getScreenshotAs(OutputType.BYTES);
+			////scn.attach(data, "image/png", "screenshot_01");
+
+			driver.quit();
+			scn.log("Browser Closed");
+		}
+	}
 	@Given("User navigated to the home application url")
 	public void user_navigated_to_the_home_application_url() {
 		driver.get(base_url);
@@ -87,4 +91,5 @@ public class StepDefs {
 		searchPageObjects.UserClickOnAddToCartBtn();
 		scn.log("Clicked on add to cart button");
 	}
+	
 }

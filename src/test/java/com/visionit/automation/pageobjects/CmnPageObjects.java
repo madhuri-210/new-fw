@@ -16,7 +16,7 @@ public class CmnPageObjects {
 	WebDriver driver;
 	private By search_text_box=By.id("twotabsearchtextbox");
 	private By search_button=By.xpath("//input[@value='Go']");
-
+	
 	public CmnPageObjects(WebDriver driver){
 		this.driver=driver;
 	}
@@ -39,5 +39,5 @@ public class CmnPageObjects {
 		Assert.assertEquals("Title Validation",true, b);
 		logger.info("Page title matched: " + expectedTitle );
 	}
-
+	
 }

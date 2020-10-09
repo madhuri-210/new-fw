@@ -7,3 +7,4 @@
     When User click on any product
     Then Product Description is displayed in new tab
     And User is click on Add to cart
+   

@@ -17,6 +17,7 @@ public class SearchPageObjects {
 	private WebDriver driver;
 	private By search_refinement_categories_segment  = By.id("s-refinements");
 	private By product_link_list=By.xpath("//a[@class='a-link-normal a-text-normal']");
+	private By add_to_cart_btn=By.id("add-to-cart-button");
 	
 	public SearchPageObjects(WebDriver driver){
 		this.driver=driver;
@@ -51,7 +52,7 @@ public class SearchPageObjects {
 		String parentWindow=it.next();
 		String childWindow=it.next();
 		driver.switchTo().window(childWindow);
-		driver.findElement(By.id("add-to-cart-button")).click();
+		driver.findElement(add_to_cart_btn).click();
 		logger.info("Clicked on the Add To Cart Buttun");
 	}
 	
