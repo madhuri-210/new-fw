@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features="classpath:features/AddToCart.feature",
+        features="classpath:features/AddToWishList.feature",
         glue="com.visionit.automation.stepdefs", 
         tags="",
         plugin = {"pretty",
@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
                   "json:target/json/file.json"
                  },
         publish=true,
-        monochrome=true,
+        //monochrome=true,
         dryRun=false 
         )
 public class TestRunner {

@@ -11,6 +11,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+import io.cucumber.java.en.Given;
+import io.cucumber.java.en.Then;
+
 public class SearchPageObjects {
 	private static final Logger logger=LogManager.getLogger(SearchPageObjects.class);
 
@@ -18,11 +21,12 @@ public class SearchPageObjects {
 	private By search_refinement_categories_segment  = By.id("s-refinements");
 	private By product_link_list=By.xpath("//a[@class='a-link-normal a-text-normal']");
 	private By add_to_cart_btn=By.id("add-to-cart-button");
+	private By add_to_wish_list_btn=By.xpath("//a[@id='wishListMainButton-announce']");
 	
 	public SearchPageObjects(WebDriver driver){
 		this.driver=driver;
 	}
-	
+
 	public void ValidateProductSearchIsSuccessfull(){
 		if (driver.findElement(search_refinement_categories_segment).isDisplayed()){
 			Assert.assertTrue(true);
@@ -32,7 +36,7 @@ public class SearchPageObjects {
 			Assert.fail("Search Page is not displayed because refinement category is not displayed");
 		}
 	}
-	
+
 	public String ClickOnTheProductLink(int productIndex){
 		//listOfProducts will have all the links displayed in the search box
 		List<WebElement> listOfProducts = driver.findElements(product_link_list);
@@ -45,7 +49,7 @@ public class SearchPageObjects {
 		return listOfProducts.get(productIndex).getText();
 
 	}
-	
+
 	public void UserClickOnAddToCartBtn(){
 		Set<String> handles=driver.getWindowHandles();
 		Iterator<String> it=handles.iterator();
@@ -56,5 +60,14 @@ public class SearchPageObjects {
 		logger.info("Clicked on the Add To Cart Buttun");
 	}
 	
+	public void UserClickOnAddToWishListBtn(){
+		Set<String> handles=driver.getWindowHandles();
+		Iterator<String> it=handles.iterator();
+		String parentWindow=it.next();
+		String childWindow=it.next();
+		driver.switchTo().window(childWindow);
+		driver.findElement(add_to_wish_list_btn).click();
+		logger.info("Clicked on the Add To Wish List Button");
+	}
 
 }

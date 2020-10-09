@@ -92,4 +92,17 @@ public class StepDefs {
 		scn.log("Clicked on add to cart button");
 	}
 	
+	@Given("User search for tha product {string}")
+	public void user_search_for_tha_product(String productName) {
+		cmnPageObjects.SetSearchTextBox(productName);
+		cmnPageObjects.ClickOnSearchButton();
+		scn.log("Product Searched: " + productName);
+	}
+
+	@Then("User is click on Add to wish list button")
+	public void user_is_click_on_add_to_wish_list_button() {
+		searchPageObjects.UserClickOnAddToWishListBtn();
+		scn.log("User clicked on Add to wish list button");
+	}
+	
 }
