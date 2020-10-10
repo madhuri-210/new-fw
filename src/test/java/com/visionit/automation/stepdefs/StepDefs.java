@@ -91,7 +91,7 @@ public class StepDefs {
 		searchPageObjects.UserClickOnAddToCartBtn();
 		scn.log("Clicked on add to cart button");
 	}
-	
+
 	@Given("User search for tha product {string}")
 	public void user_search_for_tha_product(String productName) {
 		cmnPageObjects.SetSearchTextBox(productName);
@@ -104,5 +104,19 @@ public class StepDefs {
 		searchPageObjects.UserClickOnAddToWishListBtn();
 		scn.log("User clicked on Add to wish list button");
 	}
-	
+
+	@Then("User validate price of the product")
+	public void user_validate_price_of_the_product() {
+		searchPageObjects.UserCheckOnValidatePrice();
+		scn.log("User validate price of the product");
+	}
+
+	@Then("again validate price of product and compare with privious price")
+	public void again_validate_price_of_product_and_compare_with_privious_price() {
+		
+	}
+
+
+
+
 }

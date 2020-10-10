@@ -5,6 +5,8 @@
     Given User navigated to the home application url
     And User Search for product "earphone"
     When User click on any product
-    Then Product Description is displayed in new tab
+    And Product Description is displayed in new tab
+    Then User validate price of the product
     And User is click on Add to cart
+    And again validate price of product and compare with privious price
    

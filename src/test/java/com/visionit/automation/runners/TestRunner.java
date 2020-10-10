@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features="classpath:features/AddToWishList.feature",
+        features="classpath:features/AddToCart.feature",
         glue="com.visionit.automation.stepdefs", 
         tags="",
         plugin = {"pretty",

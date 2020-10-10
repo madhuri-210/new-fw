@@ -22,7 +22,10 @@ public class SearchPageObjects {
 	private By product_link_list=By.xpath("//a[@class='a-link-normal a-text-normal']");
 	private By add_to_cart_btn=By.id("add-to-cart-button");
 	private By add_to_wish_list_btn=By.xpath("//a[@id='wishListMainButton-announce']");
-	
+	private By validate_price =By.xpath("//span[@id='priceblock_ourprice']");
+	private By again_validate_price=By.xpath("//span[@class='a-color-price hlb-price a-inline-block a-text-bold']");
+
+
 	public SearchPageObjects(WebDriver driver){
 		this.driver=driver;
 	}
@@ -50,16 +53,32 @@ public class SearchPageObjects {
 
 	}
 
-	public void UserClickOnAddToCartBtn(){
+	public void UserCheckOnValidatePrice(){
 		Set<String> handles=driver.getWindowHandles();
 		Iterator<String> it=handles.iterator();
 		String parentWindow=it.next();
 		String childWindow=it.next();
 		driver.switchTo().window(childWindow);
+		driver.findElement(validate_price).getText();
+		logger.info("User check on validate product price");
+	}
+
+
+	public void UserClickOnAddToCartBtn(){
 		driver.findElement(add_to_cart_btn).click();
 		logger.info("Clicked on the Add To Cart Buttun");
 	}
 	
+	public void UserAgainCheckOnValidatePrice(){
+		Set<String> handles=driver.getWindowHandles();
+		Iterator<String> it=handles.iterator();
+		String parentWindow=it.next();
+		String childWindow=it.next();
+		driver.switchTo().window(childWindow);
+		driver.findElement(again_validate_price).getText();
+		logger.info("User check on validate product price");
+	}
+
 	public void UserClickOnAddToWishListBtn(){
 		Set<String> handles=driver.getWindowHandles();
 		Iterator<String> it=handles.iterator();
