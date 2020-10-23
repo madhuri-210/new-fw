@@ -73,7 +73,6 @@ public class StepDefs {
 		scn.log("Search page is displayed");
 	}
 
-
 	@When("User click on any product")
 	public void user_click_on_any_product() {
 		searchPageObjects.ClickOnTheProductLink(0);
@@ -105,18 +104,10 @@ public class StepDefs {
 		scn.log("User clicked on Add to wish list button");
 	}
 
-	@Then("User validate price of the product")
-	public void user_validate_price_of_the_product() {
-		searchPageObjects.UserCheckOnValidatePrice();
-		scn.log("User validate price of the product");
+	@Then("Search result page are displayed")
+	public void search_result_page_are_displayed() {
+		searchPageObjects.ValidateProductSearchIsSuccessfull();
+		scn.log("Search page are displayed");
 	}
-
-	@Then("again validate price of product and compare with privious price")
-	public void again_validate_price_of_product_and_compare_with_privious_price() {
-		
-	}
-
-
-
-
+	
 }
